@@ -1,7 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Unity Assets</title>
+  <!-- Cute inline CSS -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #fffaf9;
+      color: #444;
+    }
+    header {
+      background-color: #ffcad4;
+      text-align: center;
+      padding: 2rem 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      margin: 0;
+      color: #ffffff;
+      font-size: 2.5rem;
+    }
+    nav a {
+      display: inline-block;
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+    }
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: #f48cbd;
+      border-bottom: 2px solid #f48cbd;
+      padding-bottom: 0.5rem;
+    }
+    .assets-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .asset-card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      text-align: center;
+    }
+    .asset-card img {
+      max-width: 100%;
+      border-radius: 4px;
+    }
+    .asset-title {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #f48cbd;
+    }
+    .asset-description {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      margin: 3rem 0;
+      color: #888;
+      font-size: 0.9rem;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #f8bfbf;
+      color: #ffffff;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .button:hover {
+      background-color: #f48cbd;
+    }
+  </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+  <header>
+    <h1>My Unity Assets</h1>
+    <nav>
+      <a href="#current-assets">Current</a>
+      <a href="#future-assets">Future</a>
+      <a href="https://assetstore.unity.com/publishers/99148" target="_blank">Asset Store</a>
+    </nav>
+  </header>
+
+  <section id="intro">
+    <p>Welcome! This page showcases my Unity assets (current and upcoming). Have fun exploring, and feel free to reach out if you have any questions!</p>
+  </section>
+
+  <section id="current-assets">
+    <h2>Current Assets</h2>
+    <div class="assets-list">
+      <!-- Example asset card 1 -->
+      <div class="asset-card">
+        <img src="https://via.placeholder.com/300" alt="Asset 1 Preview">
+        <div class="asset-title">Asset Name 1</div>
+        <div class="asset-description">A short description of what this asset does and why it’s awesome.</div>
+        <a href="https://assetstore.unity.com/publishers/99148" target="_blank" class="button">Get It</a>
+      </div>
+      <!-- Example asset card 2 -->
+      <div class="asset-card">
+        <img src="https://via.placeholder.com/300" alt="Asset 2 Preview">
+        <div class="asset-title">Asset Name 2</div>
+        <div class="asset-description">A short description of what this asset does and why it’s awesome.</div>
+        <a href="https://assetstore.unity.com/publishers/99148" target="_blank" class="button">Get It</a>
+      </div>
+      <!-- Add more cards as needed -->
+    </div>
+  </section>
+
+  <section id="future-assets">
+    <h2>Upcoming Assets</h2>
+    <p>Here's a sneak peek at assets in the pipeline:</p>
+    <ul>
+      <li>Future Asset 1 - <em>Early 2025</em></li>
+      <li>Future Asset 2 - <em>Q3 2025</em></li>
+      <!-- Add more future assets as needed -->
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2024 My Unity Assets | <a href="https://assetstore.unity.com/publishers/99148" target="_blank">Publisher Page</a></p>
+  </footer>
+
 </body>
 </html>

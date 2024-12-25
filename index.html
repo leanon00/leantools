@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Leanon00's Dark Unity Assets</title>
+  <title>leanon00's Unity Assets</title>
   <style>
     /* RESET + BASIC STYLING */
     * {
@@ -13,45 +13,40 @@
     }
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212; 
+      background: #111;
       color: #f0f0f0;
-      overflow-x: hidden;
       position: relative;
+      overflow-x: hidden;
       animation: fadeIn 0.8s ease-in-out;
+      min-height: 100vh;
     }
     @keyframes fadeIn {
       from { opacity: 0; }
       to   { opacity: 1; }
     }
-    
-    /* Subtle pulsing radial background effect */
+
+    /* SIMPLE "FOG" BACKGROUND */
     body::before {
       content: "";
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: -1;
-      background: repeating-radial-gradient(
-        circle at 50% 50%,
-        rgba(46, 204, 113, 0.03),
-        rgba(46, 204, 113, 0.03) 10px,
-        transparent 10px,
-        transparent 40px
-      );
-      animation: backgroundPulse 6s linear infinite alternate;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03), transparent 70%);
+      animation: fogMove 8s ease-in-out infinite alternate;
     }
-    @keyframes backgroundPulse {
-      0%   { opacity: 0.3; }
-      100% { opacity: 0.7; }
+    @keyframes fogMove {
+      0%   { transform: scale(1) translateX(0); }
+      100% { transform: scale(1.1) translateX(10%); }
     }
 
     a {
       color: #2ecc71;
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
     }
     a:hover {
       color: #27ae60;
@@ -75,118 +70,99 @@
       justify-content: space-between;
     }
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: bold;
       letter-spacing: 1px;
       text-shadow: 0 0 4px #2ecc71;
     }
     nav a {
       margin-left: 1rem;
-      font-weight: 500;
     }
 
-    /* HERO / INTRO */
+    /* HERO / QUOTE */
     .hero {
-      padding: 4rem 1rem;
       text-align: center;
-      background: linear-gradient(90deg, #1f1f1f, #151515);
+      padding: 3rem 1rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
-      text-shadow: 0 0 6px #2ecc71;
-      animation: floatText 3s ease-in-out infinite;
+      font-weight: 600;
     }
     .hero p {
       font-size: 1rem;
       max-width: 600px;
-      margin: 0 auto;
+      margin: 0.5rem auto;
       color: #ccc;
-    }
-    @keyframes floatText {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-5px); }
+      line-height: 1.4;
     }
 
-    /* SECTIONS */
+    /* CURRENT ASSETS SECTION */
     section {
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
     section h2 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
       text-shadow: 0 0 4px #2ecc71;
     }
-    section h2::after {
-      content: "";
-      position: absolute;
-      left: 0; 
-      bottom: -4px;
-      width: 60%;
-      height: 2px;
-      background: #2ecc71;
-      animation: underlineGlow 1.5s infinite;
-    }
-    @keyframes underlineGlow {
-      0% {
-        box-shadow: 0 0 8px #2ecc71;
-      }
-      50% {
-        box-shadow: 0 0 2px #2ecc71;
-      }
-      100% {
-        box-shadow: 0 0 8px #2ecc71;
-      }
-    }
 
-    /* ASSET GRID */
+    /* ASSET DISPLAY */
     .assets-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
     }
     .asset-card {
       background: #1e1e1e;
       border-radius: 8px;
-      overflow: hidden;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
-      padding-bottom: 1rem;
+      padding: 1rem;
+      width: 300px;
     }
     .asset-card:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
       box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);
     }
     .asset-card img {
       width: 100%;
+      height: auto;
       display: block;
+      border-radius: 4px;
+      margin-bottom: 1rem;
     }
     .asset-title {
-      font-size: 1.2rem;
-      margin: 1rem 0 0.5rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
       color: #2ecc71;
-      text-shadow: 0 0 4px rgba(46, 204, 113, 0.4);
     }
     .asset-description {
-      color: #bbb;
-      font-size: 0.9rem;
-      padding: 0 0.5rem;
+      color: #ccc;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
     }
     .button {
       display: inline-block;
-      margin-top: 1rem;
       padding: 0.6rem 1rem;
       background-color: #2ecc71;
-      color: #121212;
+      color: #111;
       font-weight: bold;
       border-radius: 4px;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
     }
     .button:hover {
       background-color: #27ae60;
@@ -198,7 +174,6 @@
       text-align: center;
       padding: 2rem 1rem;
       color: #666;
-      font-size: 0.9rem;
       background: #1c1c1c;
       margin-top: 2rem;
     }
@@ -216,6 +191,10 @@
         margin-left: 0;
         margin-right: 1rem;
       }
+      .assets-list {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -224,22 +203,21 @@
   <!-- HEADER -->
   <header>
     <div class="header-inner">
-      <div class="logo">leanon00’s Assets</div>
+      <div class="logo">leanon00's Assets</div>
       <nav>
-        <a href="#current-assets">Current</a>
-        <a href="#future-assets">Future</a>
+        <a href="#current-assets">Assets</a>
         <a href="https://assetstore.unity.com/publishers/99148" target="_blank">Asset Store</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO / QUOTE -->
   <div class="hero">
-    <h1>Welcome to My Dark Unity Assets Page</h1>
-    <p>Showcasing the coolest Unity assets I've published (and some sneak peeks of what's next!)</p>
+    <h1>Assets to Make Our Development Easier!</h1>
+    <p>Editor tools to enhance our productivity as game developers.</p>
   </div>
 
-  <!-- CURRENT ASSETS SECTION -->
+  <!-- CURRENT ASSETS ONLY -->
   <section id="current-assets">
     <h2>Current Assets</h2>
     <div class="assets-list">
@@ -252,26 +230,23 @@
         <div class="asset-description">
           Quickly find and manage missing, duplicate, or specific components in your Unity scenes.
         </div>
-        <a 
-          href="https://assetstore.unity.com/packages/tools/utilities/objects-detective-283594" 
-          target="_blank" 
-          class="button">
-          Get It
-        </a>
+        <div class="button-group">
+          <a 
+            href="https://assetstore.unity.com/packages/tools/utilities/objects-detective-283594" 
+            target="_blank" 
+            class="button">
+            Get It
+          </a>
+          <a
+            href="https://youtu.be/rvIEXUKjGCQ" 
+            target="_blank"
+            class="button">
+            Watch Demo
+          </a>
+        </div>
       </div>
-      <!-- You could add more asset cards below as needed -->
+      <!-- Add more assets if you'd like -->
     </div>
-  </section>
-
-  <!-- FUTURE ASSETS SECTION -->
-  <section id="future-assets">
-    <h2>Future Assets</h2>
-    <p>Stay tuned for upcoming releases:</p>
-    <ul>
-      <li>Future Asset 1 – <em>Early 2025</em></li>
-      <li>Future Asset 2 – <em>Q3 2025</em></li>
-      <!-- More future assets if needed -->
-    </ul>
   </section>
 
   <!-- FOOTER -->

@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Dark-Themed Unity Assets</title>
+  <title>Leanon00's Dark Unity Assets</title>
   <style>
-    /* ----------------------------------------
-       BASIC STYLING
-    ---------------------------------------- */
+    /* RESET + BASIC STYLING */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,16 +13,41 @@
     }
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
+      background: #121212; 
       color: #f0f0f0;
       overflow-x: hidden;
-      /* Fade in animation for entire body */
+      position: relative;
       animation: fadeIn 0.8s ease-in-out;
     }
     @keyframes fadeIn {
       from { opacity: 0; }
       to   { opacity: 1; }
     }
+    
+    /* Subtle pulsing radial background effect */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      background: repeating-radial-gradient(
+        circle at 50% 50%,
+        rgba(46, 204, 113, 0.03),
+        rgba(46, 204, 113, 0.03) 10px,
+        transparent 10px,
+        transparent 40px
+      );
+      animation: backgroundPulse 6s linear infinite alternate;
+    }
+    @keyframes backgroundPulse {
+      0%   { opacity: 0.3; }
+      100% { opacity: 0.7; }
+    }
+
     a {
       color: #2ecc71;
       text-decoration: none;
@@ -34,9 +57,7 @@
       color: #27ae60;
     }
 
-    /* ----------------------------------------
-       HEADER / NAV
-    ---------------------------------------- */
+    /* HEADER */
     header {
       width: 100%;
       padding: 1rem;
@@ -57,7 +78,6 @@
       font-size: 1.6rem;
       font-weight: bold;
       letter-spacing: 1px;
-      /* Text glow effect */
       text-shadow: 0 0 4px #2ecc71;
     }
     nav a {
@@ -65,20 +85,16 @@
       font-weight: 500;
     }
 
-    /* ----------------------------------------
-       INTRO SECTION / HERO
-    ---------------------------------------- */
+    /* HERO / INTRO */
     .hero {
       padding: 4rem 1rem;
       text-align: center;
       background: linear-gradient(90deg, #1f1f1f, #151515);
-      position: relative;
     }
     .hero h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
       text-shadow: 0 0 6px #2ecc71;
-      /* Subtle "float" animation for text */
       animation: floatText 3s ease-in-out infinite;
     }
     .hero p {
@@ -92,9 +108,7 @@
       50%      { transform: translateY(-5px); }
     }
 
-    /* ----------------------------------------
-       SECTIONS
-    ---------------------------------------- */
+    /* SECTIONS */
     section {
       max-width: 900px;
       margin: 2rem auto;
@@ -107,7 +121,6 @@
       display: inline-block;
       text-shadow: 0 0 4px #2ecc71;
     }
-    /* Cheap underline effect */
     section h2::after {
       content: "";
       position: absolute;
@@ -130,9 +143,7 @@
       }
     }
 
-    /* ----------------------------------------
-       ASSET GRID
-    ---------------------------------------- */
+    /* ASSET GRID */
     .assets-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -182,18 +193,17 @@
       color: #fff;
     }
 
-    /* ----------------------------------------
-       FOOTER
-    ---------------------------------------- */
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 2rem 1rem;
       color: #666;
       font-size: 0.9rem;
       background: #1c1c1c;
+      margin-top: 2rem;
     }
 
-    /* Responsive Media Query */
+    /* RESPONSIVE */
     @media (max-width: 600px) {
       .header-inner {
         flex-direction: column;
@@ -214,7 +224,7 @@
   <!-- HEADER -->
   <header>
     <div class="header-inner">
-      <div class="logo">My Unity Assets</div>
+      <div class="logo">leanon00’s Assets</div>
       <nav>
         <a href="#current-assets">Current</a>
         <a href="#future-assets">Future</a>
@@ -233,37 +243,40 @@
   <section id="current-assets">
     <h2>Current Assets</h2>
     <div class="assets-list">
-      <!-- Asset Card Example -->
+      <!-- ASSET CARD: Objects Detective -->
       <div class="asset-card">
-        <img src="https://via.placeholder.com/500x300/2ecc71/ffffff?text=Asset+1" alt="Asset Preview">
-        <div class="asset-title">Asset Name 1</div>
-        <div class="asset-description">A short description about the features of this asset.</div>
-        <a href="https://assetstore.unity.com/publishers/99148" target="_blank" class="button">Get It</a>
+        <img 
+          src="https://assetstorev1-prd-cdn.unity3d.com/key-image/31336e53-35b1-4370-a8f0-74bd8beddf27.webp" 
+          alt="Objects Detective preview image">
+        <div class="asset-title">Objects Detective</div>
+        <div class="asset-description">
+          Quickly find and manage missing, duplicate, or specific components in your Unity scenes.
+        </div>
+        <a 
+          href="https://assetstore.unity.com/packages/tools/utilities/objects-detective-283594" 
+          target="_blank" 
+          class="button">
+          Get It
+        </a>
       </div>
-      <div class="asset-card">
-        <img src="https://via.placeholder.com/500x300/2ecc71/ffffff?text=Asset+2" alt="Asset Preview">
-        <div class="asset-title">Asset Name 2</div>
-        <div class="asset-description">A short description about the features of this asset.</div>
-        <a href="https://assetstore.unity.com/publishers/99148" target="_blank" class="button">Get It</a>
-      </div>
-      <!-- Add more asset cards as needed -->
+      <!-- You could add more asset cards below as needed -->
     </div>
   </section>
 
   <!-- FUTURE ASSETS SECTION -->
   <section id="future-assets">
     <h2>Future Assets</h2>
-    <p>Here’s a sneak peek of what’s coming soon:</p>
+    <p>Stay tuned for upcoming releases:</p>
     <ul>
       <li>Future Asset 1 – <em>Early 2025</em></li>
       <li>Future Asset 2 – <em>Q3 2025</em></li>
-      <!-- Add more future assets as needed -->
+      <!-- More future assets if needed -->
     </ul>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    © 2024 My Unity Assets | <a href="https://assetstore.unity.com/publishers/99148" target="_blank">Publisher Page</a>
+    © 2024 leanon00 | <a href="https://assetstore.unity.com/publishers/99148" target="_blank">Publisher Page</a>
   </footer>
 
 </body>

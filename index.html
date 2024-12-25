@@ -3,142 +3,267 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Unity Assets</title>
-  <!-- Cute inline CSS -->
+  <title>My Dark-Themed Unity Assets</title>
   <style>
-    body {
+    /* ----------------------------------------
+       BASIC STYLING
+    ---------------------------------------- */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      background: #fffaf9;
-      color: #444;
     }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      overflow-x: hidden;
+      /* Fade in animation for entire body */
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    a {
+      color: #2ecc71;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #27ae60;
+    }
+
+    /* ----------------------------------------
+       HEADER / NAV
+    ---------------------------------------- */
     header {
-      background-color: #ffcad4;
-      text-align: center;
-      padding: 2rem 0;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      padding: 1rem;
+      background: #1c1c1c;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
-    header h1 {
-      margin: 0;
-      color: #ffffff;
-      font-size: 2.5rem;
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      /* Text glow effect */
+      text-shadow: 0 0 4px #2ecc71;
     }
     nav a {
-      display: inline-block;
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: bold;
+      margin-left: 1rem;
+      font-weight: 500;
     }
+
+    /* ----------------------------------------
+       INTRO SECTION / HERO
+    ---------------------------------------- */
+    .hero {
+      padding: 4rem 1rem;
+      text-align: center;
+      background: linear-gradient(90deg, #1f1f1f, #151515);
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 6px #2ecc71;
+      /* Subtle "float" animation for text */
+      animation: floatText 3s ease-in-out infinite;
+    }
+    .hero p {
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #ccc;
+    }
+    @keyframes floatText {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-5px); }
+    }
+
+    /* ----------------------------------------
+       SECTIONS
+    ---------------------------------------- */
     section {
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
-    h2 {
-      margin-top: 2rem;
-      color: #f48cbd;
-      border-bottom: 2px solid #f48cbd;
-      padding-bottom: 0.5rem;
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+      text-shadow: 0 0 4px #2ecc71;
     }
+    /* Cheap underline effect */
+    section h2::after {
+      content: "";
+      position: absolute;
+      left: 0; 
+      bottom: -4px;
+      width: 60%;
+      height: 2px;
+      background: #2ecc71;
+      animation: underlineGlow 1.5s infinite;
+    }
+    @keyframes underlineGlow {
+      0% {
+        box-shadow: 0 0 8px #2ecc71;
+      }
+      50% {
+        box-shadow: 0 0 2px #2ecc71;
+      }
+      100% {
+        box-shadow: 0 0 8px #2ecc71;
+      }
+    }
+
+    /* ----------------------------------------
+       ASSET GRID
+    ---------------------------------------- */
     .assets-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1.5rem;
-      margin: 1.5rem 0;
+      margin-top: 1.5rem;
     }
     .asset-card {
-      background-color: #ffffff;
+      background: #1e1e1e;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
+      overflow: hidden;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
+      padding-bottom: 1rem;
+    }
+    .asset-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);
     }
     .asset-card img {
-      max-width: 100%;
-      border-radius: 4px;
+      width: 100%;
+      display: block;
     }
     .asset-title {
-      margin-top: 1rem;
       font-size: 1.2rem;
-      font-weight: bold;
-      color: #f48cbd;
+      margin: 1rem 0 0.5rem;
+      color: #2ecc71;
+      text-shadow: 0 0 4px rgba(46, 204, 113, 0.4);
     }
     .asset-description {
+      color: #bbb;
       font-size: 0.9rem;
-      color: #666;
-      margin-top: 0.5rem;
-    }
-    footer {
-      text-align: center;
-      margin: 3rem 0;
-      color: #888;
-      font-size: 0.9rem;
+      padding: 0 0.5rem;
     }
     .button {
       display: inline-block;
       margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #f8bfbf;
-      color: #ffffff;
+      padding: 0.6rem 1rem;
+      background-color: #2ecc71;
+      color: #121212;
       font-weight: bold;
-      text-decoration: none;
       border-radius: 4px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     .button:hover {
-      background-color: #f48cbd;
+      background-color: #27ae60;
+      color: #fff;
+    }
+
+    /* ----------------------------------------
+       FOOTER
+    ---------------------------------------- */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #666;
+      font-size: 0.9rem;
+      background: #1c1c1c;
+    }
+
+    /* Responsive Media Query */
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        margin-top: 1rem;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
-    <h1>My Unity Assets</h1>
-    <nav>
-      <a href="#current-assets">Current</a>
-      <a href="#future-assets">Future</a>
-      <a href="https://assetstore.unity.com/publishers/99148" target="_blank">Asset Store</a>
-    </nav>
+    <div class="header-inner">
+      <div class="logo">My Unity Assets</div>
+      <nav>
+        <a href="#current-assets">Current</a>
+        <a href="#future-assets">Future</a>
+        <a href="https://assetstore.unity.com/publishers/99148" target="_blank">Asset Store</a>
+      </nav>
+    </div>
   </header>
 
-  <section id="intro">
-    <p>Welcome! This page showcases my Unity assets (current and upcoming). Have fun exploring, and feel free to reach out if you have any questions!</p>
-  </section>
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Welcome to My Dark Unity Assets Page</h1>
+    <p>Showcasing the coolest Unity assets I've published (and some sneak peeks of what's next!)</p>
+  </div>
 
+  <!-- CURRENT ASSETS SECTION -->
   <section id="current-assets">
     <h2>Current Assets</h2>
     <div class="assets-list">
-      <!-- Example asset card 1 -->
+      <!-- Asset Card Example -->
       <div class="asset-card">
-        <img src="https://via.placeholder.com/300" alt="Asset 1 Preview">
+        <img src="https://via.placeholder.com/500x300/2ecc71/ffffff?text=Asset+1" alt="Asset Preview">
         <div class="asset-title">Asset Name 1</div>
-        <div class="asset-description">A short description of what this asset does and why it’s awesome.</div>
+        <div class="asset-description">A short description about the features of this asset.</div>
         <a href="https://assetstore.unity.com/publishers/99148" target="_blank" class="button">Get It</a>
       </div>
-      <!-- Example asset card 2 -->
       <div class="asset-card">
-        <img src="https://via.placeholder.com/300" alt="Asset 2 Preview">
+        <img src="https://via.placeholder.com/500x300/2ecc71/ffffff?text=Asset+2" alt="Asset Preview">
         <div class="asset-title">Asset Name 2</div>
-        <div class="asset-description">A short description of what this asset does and why it’s awesome.</div>
+        <div class="asset-description">A short description about the features of this asset.</div>
         <a href="https://assetstore.unity.com/publishers/99148" target="_blank" class="button">Get It</a>
       </div>
-      <!-- Add more cards as needed -->
+      <!-- Add more asset cards as needed -->
     </div>
   </section>
 
+  <!-- FUTURE ASSETS SECTION -->
   <section id="future-assets">
-    <h2>Upcoming Assets</h2>
-    <p>Here's a sneak peek at assets in the pipeline:</p>
+    <h2>Future Assets</h2>
+    <p>Here’s a sneak peek of what’s coming soon:</p>
     <ul>
-      <li>Future Asset 1 - <em>Early 2025</em></li>
-      <li>Future Asset 2 - <em>Q3 2025</em></li>
+      <li>Future Asset 1 – <em>Early 2025</em></li>
+      <li>Future Asset 2 – <em>Q3 2025</em></li>
       <!-- Add more future assets as needed -->
     </ul>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>© 2024 My Unity Assets | <a href="https://assetstore.unity.com/publishers/99148" target="_blank">Publisher Page</a></p>
+    © 2024 My Unity Assets | <a href="https://assetstore.unity.com/publishers/99148" target="_blank">Publisher Page</a>
   </footer>
 
 </body>

@@ -391,6 +391,26 @@
     background-color: #5b6eae; /* Slightly darker hover color */
     transform: scale(1.05);
     }
+
+
+    /* Add this at the bottom of your CSS or in a separate media-queries section */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;   /* Stack logo and nav vertically */
+    align-items: center;      /* Center them horizontally */
+  }
+  
+  nav {
+    margin-top: 1rem;        /* Add spacing above the nav links */
+    flex-direction: row;   /* Stack nav links vertically */
+    gap: 0.5rem;             /* Make the gap smaller for mobile */
+  }
+  
+  nav a {
+    font-size: 1rem;         /* (Optional) adjust font size for smaller screens */
+    padding: 0.5rem 0.75rem; /* (Optional) tweak padding for narrower screens */
+  }
+}
   </style>
 </head>
 <body>
